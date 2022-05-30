@@ -266,9 +266,6 @@ interface IERC721A {
 // ERC721A Contracts v3.3.0
 // Creator: Chiru Labs
 
-pragma solidity ^0.8.4;
-
-
 /**
  * @dev ERC721 token receiver interface.
  */
@@ -1080,10 +1077,7 @@ contract ERC721A is IERC721A {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Strings.sol
 
-
 // OpenZeppelin Contracts v4.4.1 (utils/Strings.sol)
-
-pragma solidity ^0.8.0;
 
 /**
  * @dev String operations.
@@ -1158,10 +1152,7 @@ library Strings {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Context.sol
 
-
 // OpenZeppelin Contracts v4.4.1 (utils/Context.sol)
-
-pragma solidity ^0.8.0;
 
 /**
  * @dev Provides information about the current execution context, including the
@@ -1185,11 +1176,7 @@ abstract contract Context {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
-
 // OpenZeppelin Contracts v4.4.1 (access/Ownable.sol)
-
-pragma solidity ^0.8.0;
-
 
 /**
  * @dev Contract module which provides a basic access control mechanism, where
@@ -1263,10 +1250,7 @@ abstract contract Ownable is Context {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Address.sol
 
-
 // OpenZeppelin Contracts (last updated v4.5.0) (utils/Address.sol)
-
-pragma solidity ^0.8.1;
 
 /**
  * @dev Collection of functions related to the address type
@@ -1488,10 +1472,7 @@ library Address {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721Receiver.sol
 
-
 // OpenZeppelin Contracts (last updated v4.6.0) (token/ERC721/IERC721Receiver.sol)
-
-pragma solidity ^0.8.0;
 
 /**
  * @title ERC721 token receiver interface
@@ -1518,10 +1499,7 @@ interface IERC721Receiver {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/introspection/IERC165.sol
 
-
 // OpenZeppelin Contracts v4.4.1 (utils/introspection/IERC165.sol)
-
-pragma solidity ^0.8.0;
 
 /**
  * @dev Interface of the ERC165 standard, as defined in the
@@ -1546,11 +1524,7 @@ interface IERC165 {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/introspection/ERC165.sol
 
-
 // OpenZeppelin Contracts v4.4.1 (utils/introspection/ERC165.sol)
-
-pragma solidity ^0.8.0;
-
 
 /**
  * @dev Implementation of the {IERC165} interface.
@@ -1577,11 +1551,7 @@ abstract contract ERC165 is IERC165 {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721.sol
 
-
 // OpenZeppelin Contracts (last updated v4.6.0) (token/ERC721/IERC721.sol)
-
-pragma solidity ^0.8.0;
-
 
 /**
  * @dev Required interface of an ERC721 compliant contract.
@@ -1722,11 +1692,7 @@ interface IERC721 is IERC165 {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/extensions/IERC721Metadata.sol
 
-
 // OpenZeppelin Contracts v4.4.1 (token/ERC721/extensions/IERC721Metadata.sol)
-
-pragma solidity ^0.8.0;
-
 
 /**
  * @title ERC-721 Non-Fungible Token Standard, optional metadata extension
@@ -1751,17 +1717,7 @@ interface IERC721Metadata is IERC721 {
 
 // File: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol
 
-
 // OpenZeppelin Contracts (last updated v4.6.0) (token/ERC721/ERC721.sol)
-
-pragma solidity ^0.8.0;
-
-
-
-
-
-
-
 
 /**
  * @dev Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including
@@ -2197,10 +2153,6 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
         uint256 tokenId
     ) internal virtual {}
 }
-
-
-pragma solidity ^0.8.0;
-
 
 contract LostAlien is ERC721A, Ownable {
 
