@@ -15,8 +15,9 @@ contract Mint1 {
     uint256 public price = 0.002 ether;
     address public total = 0;
 
-    constructor() {
+    constructor(address _nft) {
       operator = msg.sender;
+      nft = _nft;
     }
 
     setNft(address _nft) external {

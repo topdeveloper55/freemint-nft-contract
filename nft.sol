@@ -2176,10 +2176,8 @@ contract LostAlien is ERC721A, Ownable {
 
     mapping(address => uint256) public mintedFreeAmount;
 
-    constructor(address _minter0, address _minter1) ERC721A("LostAlien", "LA") {
+    constructor() ERC721A("LostAlien", "LA") {
         setBaseURI("ipfs://QmWXYiNey6MbURArCg2K7YWzGv2syauo5VWTMUJRg739Xg/");
-        minter0 = _minter0;
-        minter1 = _minter1;
     }
 
     function mint(uint256 count, address user) external returns(uint256) {
@@ -2203,8 +2201,9 @@ contract LostAlien is ERC721A, Ownable {
         return count * cost;
     }
 
-    function setMinter0(address _minter0) external onlyOwner {
+    function setMinter(address _minter0, address _minter1) external onlyOwner {
         minter0 = _minter0;
+        minter1 = _minter1;
     }
 
     function setMinter1(address _minter1) external onlyOwner {
