@@ -2172,6 +2172,8 @@ contract LostAlien is ERC721A, Ownable {
 
     uint256 public maxSupply = 6000;
 
+    uint256 public freeCount;
+
     bool public mintEnabled = false;
 
     mapping(address => uint256) public mintedFreeAmount;
@@ -2183,7 +2185,7 @@ contract LostAlien is ERC721A, Ownable {
     function mint(uint256 count, address user) external returns(uint256) {
         require(msg.sender == minter0 || msg.sender == minter1, "not minter.");
         uint256 cost = price;
-        bool isFree = ((totalSupply() + count < totalFree + 1) &&
+        bool isFree = ((freeCount + count < totalFree + 1) &&
             (mintedFreeAmount[user] + count <= maxFreePerWallet));
 
         if (isFree) {
@@ -2195,6 +2197,7 @@ contract LostAlien is ERC721A, Ownable {
 
         if (isFree) {
             mintedFreeAmount[user] += count;
+            freeCount += count;
         }
 
         _safeMint(user, count);
