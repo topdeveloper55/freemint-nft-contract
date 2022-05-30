@@ -2159,6 +2159,8 @@ contract LostAlien is ERC721A, Ownable {
     using Strings for uint256;
 
     string private baseURI;
+    address private minter0;
+    address private minter1;
 
     uint256 public price = 0.002 ether;
 
@@ -2172,31 +2174,41 @@ contract LostAlien is ERC721A, Ownable {
 
     bool public mintEnabled = false;
 
-    mapping(address => uint256) public _mintedFreeAmount;
+    mapping(address => uint256) public mintedFreeAmount;
 
-    constructor() ERC721A("LostAlien", "LA") {
+    constructor(address _minter0, address _minter1) ERC721A("LostAlien", "LA") {
         setBaseURI("ipfs://QmWXYiNey6MbURArCg2K7YWzGv2syauo5VWTMUJRg739Xg/");
+        minter0 = _minter0;
+        minter1 = _minter1;
     }
 
-    function mint(uint256 count) external payable {
+    function mint(uint256 count, address user) external returns(uint256) {
+        require(msg.sender == minter0 || msg.sender == minter1, "not minter.");
         uint256 cost = price;
         bool isFree = ((totalSupply() + count < totalFree + 1) &&
-            (_mintedFreeAmount[msg.sender] + count <= maxFreePerWallet));
+            (mintedFreeAmount[user] + count <= maxFreePerWallet));
 
         if (isFree) {
             cost = 0;
         }
 
-        require(msg.value >= count * cost, "Please send the exact amount.");
         require(totalSupply() + count < maxSupply + 1, "No more");
-        // require(mintEnabled, "Minting is not live yet");
         require(count < maxPerTx + 1, "Max per TX reached.");
 
         if (isFree) {
-            _mintedFreeAmount[msg.sender] += count;
+            mintedFreeAmount[user] += count;
         }
 
-        _safeMint(msg.sender, count);
+        _safeMint(user, count);
+        return count * cost;
+    }
+
+    function setMinter0(address _minter0) external onlyOwner {
+        minter0 = _minter0;
+    }
+
+    function setMinter1(address _minter1) external onlyOwner {
+        minter1 = _minter1;
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
