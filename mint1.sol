@@ -13,14 +13,14 @@ contract Mint1 {
     address public operator;
     address public nft;
     uint256 public price = 0.002 ether;
-    address public total = 0;
+    uint256 public total = 0;
 
     constructor(address _nft) {
       operator = msg.sender;
       nft = _nft;
     }
 
-    setNft(address _nft) external {
+    function setNft(address _nft) external {
       require(msg.sender == operator, "!not operator");
       nft = _nft;
     }
